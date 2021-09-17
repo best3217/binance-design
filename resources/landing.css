@@ -105,7 +105,7 @@
   z-index: 4;
 }
 .section-stripes.right {
-  top: -25vh;
+  top: -13.5vh;
   transform: rotate(1deg);
   right: 0;
 }
@@ -145,20 +145,8 @@
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
-.hero-header .code-example .code-example-body .pun {
-  color: #8F9CA3;
-}
-.hero-header .code-example .code-example-body .des {
-  color: #5C6370;
-}
-.hero-header .code-example .code-example-body .kwd {
-  color: #C975D0;
-}
-.hero-header .code-example .code-example-body .str {
-  color: #94BE77;
-}
-.hero-header .code-example .code-example-body .typ {
-  color: #2696D3;
+.hero-header .code-example .code-example-body img {
+  width: 100%;
 }
 .hero-header .check-out {
   background-color: #0A0A0A;

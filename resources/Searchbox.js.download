@@ -1,0 +1,137 @@
+var GlobalSearchBox = (function () {
+    function GlobalSearchBox() {
+    }
+    GlobalSearchBox.Initialize = function () {
+        if (GlobalSearchBox._initialized)
+            return;
+        GlobalSearchBox._initialized = true;
+        var ps = new PerfectScrollbar('#header-search-hits');
+        $('#search-wrapper input').on('keyup', function (e) {
+            GlobalSearchBox._OnSearchKeyUp(e);
+        });
+        $('#search-wrapper input').on('click', function (e) {
+            $('#search-wrapper').addClass("active");
+        });
+        $('#search-wrapper input').on('paste', function (e) {
+            console.log('on content pasted');
+            setTimeout(function () {
+                GlobalSearchBox._OnPaste(e);
+            }, 1);
+        });
+        $('#search-wrapper input').on('focus', function (e) {
+            console.log('on focus pasted');
+            GlobalSearchBox._ProcessNewValue(GlobalSearchBox._latestQuery);
+        });
+        GlobalSearchBox._client = algoliasearch('0VV3S715UZ', 'dbbd398bcf03db508ed6f4378b98988d');
+        GlobalSearchBox._index = GlobalSearchBox._client.initIndex('qc_web_index_content');
+        $('#search-wrapper input').trigger('focus');
+    };
+    GlobalSearchBox.SetUseNewTab = function () {
+        GlobalSearchBox._useNewTab = true;
+    };
+    GlobalSearchBox._OnPaste = function (ev) {
+        var input = $(ev.target);
+        var query = input.val();
+        GlobalSearchBox._ProcessNewValue(query);
+    };
+    GlobalSearchBox._OnSearchKeyUp = function (ev) {
+        var input = $(ev.target);
+        var query = input.val();
+        var keyCode = ev.keyCode;
+        var arrowDown = 40;
+        var arrowUp = 38;
+        var enter = 13;
+        var escape = 27;
+        switch (keyCode) {
+            case escape:
+                GlobalSearchBox.OnClearClick();
+                input.blur();
+                return;
+            case enter:
+                if (typeof GlobalSearchBox._currentResults[GlobalSearchBox._activeIndex] !== "undefined") {
+                    var host = window.location.hostname;
+                    var url = GlobalSearchBox._currentResults[GlobalSearchBox._activeIndex].url;
+                    var fullUrl = "https://" + host + url;
+                    if (GlobalSearchBox._useNewTab) {
+                        var win = window.open(fullUrl, '_blank');
+                        win.focus();
+                    }
+                    else {
+                        window.location.replace(fullUrl);
+                    }
+                }
+                break;
+            case arrowDown:
+            case arrowUp:
+                var currentLength = GlobalSearchBox._currentResults.length;
+                if (keyCode == arrowDown)
+                    GlobalSearchBox._activeIndex++;
+                if (keyCode == arrowUp)
+                    GlobalSearchBox._activeIndex--;
+                if (GlobalSearchBox._activeIndex < 0)
+                    GlobalSearchBox._activeIndex = 0;
+                if (GlobalSearchBox._activeIndex >= currentLength)
+                    GlobalSearchBox._activeIndex = (currentLength - 1);
+                GlobalSearchBox._Redraw(GlobalSearchBox._currentResults, GlobalSearchBox._activeIndex);
+                return;
+        }
+        GlobalSearchBox._ProcessNewValue(query);
+    };
+    GlobalSearchBox._ProcessNewValue = function (query) {
+        console.log("search input ", query);
+        $('#search-wrapper').addClass("active");
+        GlobalSearchBox._index.search({
+            query: query,
+            hitsPerPage: 8,
+        }, function (err, _a) {
+            var hits = (_a === void 0 ? {} : _a).hits;
+            if (err)
+                throw err;
+            console.log(hits);
+            if (GlobalSearchBox._latestQuery !== query)
+                return;
+            var data = [];
+            for (var i in hits) {
+                if (hits.hasOwnProperty(i)) {
+                    data.push({
+                        'title': hits[i].origin + "/" + hits[i]._highlightResult['title'].value,
+                        'content': hits[i]._highlightResult['content'].value,
+                        'url': hits[i].url
+                    });
+                }
+            }
+            GlobalSearchBox._currentResults = data;
+            GlobalSearchBox._activeIndex = -1;
+            GlobalSearchBox._Redraw(data, GlobalSearchBox._activeIndex);
+        });
+        GlobalSearchBox._latestQuery = query;
+    };
+    GlobalSearchBox.OnClearClick = function () {
+        GlobalSearchBox._latestQuery = '';
+        $('#search-wrapper').removeClass("active");
+        $('#search-wrapper input').val('');
+    };
+    GlobalSearchBox._Redraw = function (data, active) {
+        if (active === void 0) { active = 0; }
+        var target = $('#header-search-hits .hits');
+        var newHtml = '';
+        for (var i in data) {
+            var activeClass = '';
+            if (parseInt(i) == active) {
+                activeClass = 'active';
+            }
+            var target_1 = GlobalSearchBox._useNewTab ? '_blank' : '';
+            newHtml += "<a href=\"" + data[i].url + "\" class=\"" + activeClass + " result\" target=\"" + target_1 + "\" ><h3>" + data[i].title + "</h3><p>" + data[i].content + "</p></a>";
+        }
+        target.html(newHtml);
+    };
+    GlobalSearchBox._activeIndex = 0;
+    GlobalSearchBox._client = null;
+    GlobalSearchBox._index = null;
+    GlobalSearchBox._currentResults = [];
+    GlobalSearchBox._latestQuery = '';
+    GlobalSearchBox._initialized = false;
+    GlobalSearchBox._useNewTab = false;
+    return GlobalSearchBox;
+}());
+//# sourceMappingURL=Searchbox.js.map

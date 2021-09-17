@@ -1,0 +1,241 @@
+/*
+ QUANTCONNECT.Com - Democratizing Finance. Empowering Individuals
+ Created Jan-2012 by Jared Broad
+ Form Supplemental Controller
+ */
+
+if (this.qc === undefined) {
+    this.qc = {};
+}
+
+this.qc.forms = new function () {
+
+
+    /*
+     *	Submit a form on clicking enter, new line on clicking Shift+enter..
+     *	-> Supply the text area ID, + form to submit on return.
+     */
+    this.newLineOnShiftEnter = function (sTextAreaID, sFormID) {
+        $(sTextAreaID).keydown(function (event) {
+            if (event.keyCode == 13 && event.shiftKey) {
+                event.stopPropagation();
+                event.preventDefault();
+            } else if (event.keyCode == 13) {
+                $(sFormID).submit();
+                event.stopPropagation();
+                event.preventDefault();
+            }
+        });
+    };
+
+
+    /*
+     *	Submit a form input but on CR.
+     */
+    this.submitOnEnter = function (sInputSelector, sFormID) {
+        $(sInputSelector).keyup(function (event) {
+            if (event.keyCode == 13) {
+                $(sFormID).submit();
+            }
+        });
+    };
+
+
+    /*
+     *	Routine On Enter
+     */
+    this.callbackOnEnter = function (sInputSelector, callback) {
+        $(sInputSelector).keyup(function (event) {
+            if (event.keyCode == 13) {
+                callback();
+            }
+            event.stopPropagation();
+            event.preventDefault();
+        });
+    };
+
+
+    /*
+     *	Limit the length of the supplied field, return the callback every keypress with char count.
+     */
+    this.limitLength = function (sFieldID, length, callback) {
+        $(sFieldID).keypress(function (e) {
+            //Count characters used
+            var iRemaining = length - $(sFieldID).val().length;
+            //Stop the typing.
+            if (iRemaining == 0) {
+                e.preventDefault();
+            }
+            //Return the result;
+            callback(iRemaining);
+        });
+    };
+
+
+    /*
+     *	Add autocomplete to Message text area using the common styling for autocomplete.
+     */
+    this.autocomplete = function (sTextID, oSuccess) {
+
+        //Bind the KeyUpEvent to the TextBox we want to see an auto complete
+        $(sTextID).autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: "/index.php",
+                    dataType: "json",
+                    data: {
+                        key: "processAutocomplete",
+                        search: $(sTextID).val()
+                    },
+                    crossDomain: true,
+                    success: function (data) {
+                        response($.map(data, function (item) {
+                            return {
+                                label: item.name,
+                                value: '',
+                                name: item.name,
+                                id: item.id,
+                                profileImage: item.profileimage
+                            }
+                        }));
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        //Do nothing.
+                    }
+                });
+            },
+            minLength: 2,
+            select: function (event, ui) {
+                //Call the required success routine.
+                oSuccess(ui.item);
+            },
+            create: function (event, ui) {
+                $('.ui-autocomplete').removeClass('ui-menu ui-widget ui-widget-content ui-corner-all').addClass('autoComplete');
+            }
+        }).data("autocomplete")._renderItem = function (ul, item) {
+            return $("<li class='entry'></li>")
+                .data("item.autocomplete", item)
+                .append("<a><div class='thumbnail'><img src='/i/users/profile/" + item.profileImage + "'/></div><h3>" + item.label + "</h3></a>")
+                .appendTo(ul);
+        };
+    };
+
+
+    /*
+     * Validate this keypress is a number:
+     */
+    this.isNumber = function (evt) {
+        var theEvent = evt || window.event;
+        var key = theEvent.keyCode || theEvent.which;
+        key = String.fromCharCode(key);
+        var regex = /[0-9]|\./;
+        if (!regex.test(key)) {
+            return false;
+        }
+    };
+
+
+    /*
+     *	Add autocomplete to Message text area using the common styling for autocomplete.
+     */
+    this.autocompleteUsers = function (sTextID, sTextContainerID) {
+        qc.forms.autocomplete(sTextID, function (user) {
+            var sSelectedLength = 0;
+            //Check to make sure we don't already have this user:
+            if ($('#selectedID' + user.id).length > 0) {
+                return false;
+            }
+
+            //Create a new user
+            var sNewPerson = "<span class='personSelected' id='selectedID" + user.id + "'>" + user.name + "<input class='uidTo' name='uidTo[]' type='hidden' value='" + user.id + "' /><a href='#' onClick='$(\"" + sTextID + "\").css(\"padding-left\",(parseInt($(\"" + sTextID + "\").css(\"padding-left\"))-parseInt($(this).parent().outerWidth(true)))); $(this).parent().remove();'><div class='close'></div></a></span>";
+            $(sTextContainerID).append(sNewPerson);
+
+            //Sum up the length of each selected person:
+            $('.personSelected').each(function () {
+                sSelectedLength = sSelectedLength + $(this).outerWidth(true);
+            });
+
+            if (sSelectedLength > $(sTextID).width()) {
+                $('#selectedID' + user.id).remove();
+            }
+            //Set the padding so type in new info
+            $(sTextID).css('padding-left', sSelectedLength);
+        });
+    };
+};
+
+
+function ChangePhoto() {
+    var dialog;
+    dialog = bootbox.dialog({
+        title: "<img src='https://cdn.quantconnect.com/web/i/loading-bricks.svg' id='imageUploadLoading' style='display: none;width: 15px;' alt='Please Wait'/> Update Profile Photo",
+        className: 'imageUploadModal',
+        message: $('#photoTemplate').html(),
+        buttons: {
+            main: {
+                label: "<i class='fa fa-save'></i> Save",
+                className: "btn-primary",
+                callback: function () {
+                    var jqDialog = $(dialog);
+                    $('#imageUploadForm').ajaxSubmit({
+                        resetForm: true,
+                        dataType: "json",
+                        beforeSubmit: function () {
+                            if (window.File && window.FileReader && window.FileList && window.Blob) {
+                                if (!jqDialog.find('#imageUploadInput').val()) {
+                                    jqDialog.find("#imageUploadResponse").html("Please select an image.");
+                                    return false
+                                }
+                                var fsize = jqDialog.find('#imageUploadInput')[0].files[0].size;
+                                var ftype = jqDialog.find('#imageUploadInput')[0].files[0].type;
+                                switch (ftype) {
+                                    case 'image/png':
+                                    case 'image/gif':
+                                    case 'image/jpeg':
+                                    case 'image/pjpeg':
+                                        break;
+                                    default:
+                                        jqDialog.find("#imageUploadResponse").html("Unsupported file type.");
+                                        return false
+                                }
+                                if (fsize > 1048576) {
+                                    jqDialog.find("#imageUploadResponse").html("Maximum image size is 1MB. Please select another.");
+                                    return false
+                                }
+                                jqDialog.find('.imageUploadModal .btn-primary').attr('disabled', true);
+                                jqDialog.find('#imageUploadLoading').show(); //hide submit button
+                                jqDialog.find("#imageUploadResponse").html("");
+                            } else {
+                                jqDialog.find("#imageUploadResponse").html("Sorry your browser is too old to upload a new profile image.");
+                                return false;
+                            }
+                        },
+                        success: function (data) {
+                            if (data.success == true) {
+                                jqDialog.find('#imageUploadLoading').hide();
+                                jqDialog.find('.modal-footer .btn-primary').hide();
+
+                                jqDialog.find("#imageUploadResponse").show().html("Profile image changed successfully ");
+                                $(".user-profile-image").attr("src", data.src);
+                            } else {
+                                jqDialog.find("#imageUploadResponse").show().html("Error ");
+                            }
+                        }
+                    });
+                    return false;
+                }
+            },
+            close: {
+                label: "Close",
+                className: "btn-close",
+                callback: function () {
+                    dialog.hide();
+                }
+            }
+        },
+        backdrop: true,
+        onEscape: function () {
+            dialog.hide();
+        }
+    });
+}

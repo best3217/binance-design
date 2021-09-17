@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html xmlns="http://www.w3.org/1999/xhtml" id="QuantConnect" class="quantconnect" prefix="og: http://ogp.me/ns#" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content=" - QuantConnect.com">
+    <meta property="og:image" content="https://cdn.quantconnect.com/web/i/icon_small.png">
+    <meta property="og:url" content="https://beta.quantconnect.com/consult">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content=" - QuantConnect.com">
+    <meta name="description" content="QuantConnect provides a free algorithm backtesting tool and financial data so engineers can design algorithmic trading strategies. We are democratizing algorithm trading technology to empower investors.">
+    <meta name="keywords" content=", algorithmic model creation platform, linked, algorithmic trading, strategy design">
+    <meta name="Content-Type" content="text/html; charset=utf-8">
+    <meta property="fb:admins" content="551240720">
+    <link rel="shortcut icon" type="image/x-icon" href="https://beta.quantconnect.com/qc.ico">
+    <link type="text/css" rel="stylesheet" href="./resources/perfect-scrollbar.css">
+    <script type="text/javascript" async="" src="./resources/js"></script>
+    <link type="text/css" rel="stylesheet" href="./resources/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="./resources/font-awesome.min.css">
+    <link type="text/css" rel="stylesheet" href="./resources/style1.css">
+    <link type="text/css" rel="stylesheet" href="./resources/style2.css">
+    <link type="text/css" rel="stylesheet" href="./resources/style3.css">
+    <link type="text/css" rel="stylesheet" href="./resources/landing.css">
+    <link type="text/css" rel="stylesheet" href="./resources/bootstrap.xl.css">
+    <link type="text/css" rel="stylesheet" href="./resources/qc.defaults.css">
+    <link type="text/css" rel="stylesheet" href="./resources/prettify.css">
+    <link type="text/css" rel="stylesheet" href="./resources/qc.footer.css">
+    <link type="text/css" rel="stylesheet" href="./resources/qc.header.css">
+    <link type="text/css" rel="stylesheet" href="./resources/qc.code.css">
+    <link type="text/css" rel="stylesheet" href="./resources/jquery.perfect-scrollbar.min.css">
+    <script type="text/javascript" src="./resources/jquery-3.4.1.min.js.download"></script>
+    <title>Stand Alone - QuantConnect.com</title>
+</head>
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NTXJXMG"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<div class="height-fixer" style="min-height: 100%; position: relative;">
+    <header class="standard desktop-header">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid" style="padding: 0 15px;background-color: black;">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#qc-navbar-collapse" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
+                        <span class="icon-bar"></span> <span class="icon-bar"></span>
+                    </button>
+                    <a id="header-qc-logo" href="https://beta.quantconnect.com/" class="logo FL clearfix navbar-brand" title="QuantConnect - Democratizing Finance, Empowering Individuals"> </a>
+                </div>
+                <div id="search-wrapper" onclick="GlobalSearchBox.Initialize();">
+                    <div class="search-input" id="header-search-box">
+                        <form autocomplete="off" style="width: calc(100% - 40px);display: inline-block;">
+                            <input style="display: none" type="text">
+                            <input id="auto-complete-input-field" type="text" name="qc-search-box" placeholder="" autocomplete="off">
+                        </form>
+                        <div class="input-icons">
+                            <i class="fa fa-times" aria-hidden="true" onclick="GlobalSearchBox.OnClearClick();"></i>
+                        </div>
+                    </div>
+                    <div id="header-search-hits">
+                        <div class="instructions">
+                            ↑↓ to select, press <b>enter</b> to go, use <b>esc</b> to exit
+                        </div>
+                        <div class="hits"></div>
+                    </div>
+                    <div id="header-search-hits-backdrop" onclick="GlobalSearchBox.OnClearClick();"></div>
+                </div>
+                <div class="" id="qc-navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="top nav-live-broadcast">
+                            <a style="color: #f0ad4e;" class="top" href="https://beta.quantconnect.com/market" title="Alpha Streams">
+                                Alpha Market </a>
+                        </li>
+                        <li class="divider-vertical top"></li>
+                        <li class="top">
+                            <a class="top" href="https://beta.quantconnect.com/pricing" title="Pricing"> Pricing </a>
+                        </li>
+                        <li class="divider-vertical top nav-live-broadcast"></li>
+
+
+                        <li class="top dataButton hidden-sm hidden-md ">
+                            <a class="top" href="https://beta.quantconnect.com/data" title="Download free historical data from our Data Library">
+                                Data </a>
+                        </li>
+                        <li class="divider-vertical top hidden-sm hidden-md dataButton"></li>
+                        <li class="top nav-forum">
+                            <a class="top" href="https://beta.quantconnect.com/forum" title="Get help and discuss latest quant matters in the community forums.">
+                                Community </a>
+                        </li>
+                        <li class="divider-vertical top nav-forum"></li>
+                        <li class="top nav-terminal">
+                            <a href="https://beta.quantconnect.com/terminal" class="top" title="Backtest your algorithms on historical data.">
+                                <span class="hidden-sm hidden-md qc-hidden-lg">Algorithm Lab</span>
+                                <span class="visible-sm visible-md">Lab</span>
+                                <span class="qc-visible-lg-block">Lab</span> </a>
+                        </li>
+                        <li class="divider-vertical top nav-research"></li>
+                        <li class="top nav-documentation">
+                            <a href="https://beta.quantconnect.com/docs" class="top" title="Learn more about how to make the most of QuantConnect in the documentation">
+                                <span class="hidden-sm hidden-md qc-hidden-lg">Documentation</span>
+                                <span class="visible-sm visible-md">Docs</span>
+                                <span class="qc-visible-lg-block">Docs</span> </a>
+                        </li>
+                        <li class="divider-vertical top nav-documentation"></li>
+                        <li class="top dropdown">
+                            <a href="https://beta.quantconnect.com/login" class="dropdown-toggle top" title="Sign In to QuantConnect" role="button" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-lock"></i> Sign In </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <script>
+        function toggleNavigation() {
+            let mobileNavDropdown = $("#qc-navbar-collapse-mobile");
+            mobileNavDropdown.toggleClass('hidden');
+            if (mobileNavDropdown.hasClass('hidden')) {
+                window.removeEventListener('touchmove', blockNavigationTouchPropagtation, {passive: false});
+            } else {
+                window.addEventListener('touchmove', blockNavigationTouchPropagtation, {passive: false});
+            }
+        }
+
+        function blockNavigationTouchPropagtation(event) {
+            if (!$("#qc-navbar-collapse-mobile").hasClass('hidden')) {
+                event.preventDefault();
+                event.stopImmediatePropagation();
+            }
+        }
+
+        $(document).ready(function () {
+            const ps = new PerfectScrollbar('#qc-navbar-collapse-mobile', {
+                wheelSpeed: 2,
+                suppressScrollX: true,
+                wheelPropagation: false,
+            });
+        });
+    </script>
+    <header class="thin mobile-header">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid" style="padding: 0 15px;">
+                <div class="navbar-header navbar-header-mobile">
+                    <button type="button" class="navbar-toggle collapsed" onclick="toggleNavigation()">
+                        <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
+                        <span class="icon-bar"></span> <span class="icon-bar"></span>
+                    </button>
+                    <a id="header-qc-logo" href="https://beta.quantconnect.com/" class="logo FL clearfix navbar-brand" title="QuantConnect - Democratizing Finance, Empowering Individuals"> </a>
+                    <span class="service-name hidden-xs hidden-sm hidden-md">Web</span>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="navbar-collapse hidden ps" id="qc-navbar-collapse-mobile" style="overflow: hidden;">
+        <ul class="nav navbar-nav">
+            <li class="top nav-live-broadcast">
+                <a style="color: #f0ad4e;" class="top" href="https://beta.quantconnect.com/market" title="Alpha Streams Market">
+                    Alpha Market </a>
+            </li>
+            <li class="top nav-live-broadcast">
+                <a class="top" href="https://beta.quantconnect.com/pricing" title="Pricing"> Pricing </a>
+            </li>
+            <li class="divider-vertical top nav-live-broadcast"></li>
+
+
+            <li class="top dataButton hidden-sm hidden-md">
+                <a class="top" href="https://beta.quantconnect.com/data" title="Download free historical data from our Data Library">
+                    Data </a>
+            </li>
+            <li class="divider-vertical top hidden-sm hidden-md dataButton"></li>
+            <li class="top nav-forum">
+                <a class="top" href="https://beta.quantconnect.com/forum" title="Get help and discuss latest quant matters in the community forums.">
+                    Community </a>
+            </li>
+            <li class="divider-vertical top nav-forum"></li>
+            <li class="top nav-bootcamp">
+                <a href="https://beta.quantconnect.com/learning" class="top" title="Backtest your algorithms on historical data.">
+                    Boot Camp </a>
+            </li>
+            <li class="divider-vertical top nav-bootcamp"></li>
+            <li class="top nav-terminal">
+                <a href="https://beta.quantconnect.com/terminal" class="top" title="Backtest your algorithms on historical data.">
+                    <span class="hidden-sm hidden-md qc-hidden-lg">Algorithm Lab</span>
+                    <span class="visible-sm visible-md">Lab</span> <span class="qc-visible-lg-block">Lab</span> </a>
+            </li>
+            <li class="divider-vertical top nav-research"></li>
+            <li class="top nav-documentation">
+                <a href="https://beta.quantconnect.com/docs" class="top" title="Learn more about how to make the most of QuantConnect in the documentation">
+                    <span class="hidden-sm hidden-md qc-hidden-lg">Documentation</span>
+                    <span class="visible-sm visible-md">Docs</span> <span class="qc-visible-lg-block">Docs</span> </a>
+            </li>
+            <li class="divider-vertical top nav-documentation">
+                <hr>
+            </li>
+            <li>
+                <a href="https://beta.quantconnect.com/login"></a><a class="sign-in" title="Sign In to QuantConnect" role="button" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-lock"></i> Sign In </a>
+            </li>
+            <li class="options">
+                <a class="option facebook" title="Sign In with Facebook" href="https://beta.quantconnect.com/processFacebook2/terminal" rel="nofollow">
+                    <span class="icon-container">
+                        <img src="./resources/nav_fb_icon_rev0.svg" alt="facebook">
+                    </span> <span class="option-text">
+                        Sign in with Facebook
+                    </span>
+
+                </a>
+            </li>
+            <li class="options">
+                <a class="option google" title="Sign In with Google" href="https://accounts.google.com/o/oauth2/auth?response_type=code&amp;redirect_uri=https%3A%2F%2Fbeta.quantconnect.com%2FprocessGoogle&amp;client_id=510945655446-8ksbldb4jops9uiim0laa2l73lr8qi7t.apps.googleusercontent.com&amp;scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&amp;access_type=offline&amp;approval_prompt=auto" rel="nofollow">
+                    <span class="icon-container">
+                        <img src="./resources/nav_google_icon_rev0.svg" alt="facebook">
+                    </span> <span class="option-text">
+                        Sign in with Google
+                    </span> </a>
+            </li>
+            <li class="options">
+                <a class="option email" title="Sign In with Email" href="https://beta.quantconnect.com/login?target=Web" rel="nofollow">
+                    <span class="icon-container">
+                        <img src="./resources/nav_email_icon_rev0.svg" alt="facebook">
+                    </span> <span class="option-text">
+                        Sign in with Email
+                    </span> </a>
+            </li>
+            <li class="options">
+                <p class="join-today">
+                    Don't have an account? Join QuantConnect Today
+                </p>
+            </li>
+            <li class="options">
+                <a class="option sign-up" title="Sign up" href="https://beta.quantconnect.com/terminal" rel="nofollow" style="top: 5px;">
+                    <span class="icon-container">
+                        <img src="./resources/nav_qc_icon_rev0.svg" alt="facebook">
+                    </span> <span class="option-text" style="text-align: center;">
+                        Sign up
+                    </span> </a>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="">
+
+
+        <!--- Your Code Update starts here --->
+        <div id="landing" style="min-height:calc(100vh - 550px)">
+
+            <!-- Hero header -->
+            <div class="hero-header">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 col-lg-offset-3">
+                            <div class="hero-logo">
+                                <img src="./design/HeroHeader/Binance_logo.svg" class="logo" alt="Hero Header Logo">
+                            </div>
+                            <p class="text-white text-center">Founded 2017, Binance quickly rose to being one of the most liquid crypto exchanges in the world, with its deep liquidity and a wide list of coins supported. QuantConnect has integrated with the Binance spot and margin trading API, allowing users to perform high fidelity research and deploy strategies to live trading.</p>
+                            <p class="text-white text-center">Unlike other platforms, QuantConnect’s institutional caliber platform provides unparalleled stability, reliability, and accuracy to ensure you live trading looks like your backtest research.</p>
+                            <div class="code-example">
+                                <div class="code-example-header">
+                                    <p>Integrate Binance using few lines of code</p>
+                                </div>
+                                <div class="code-example-body">
+                                    <pre>
+                                        <span class="kwd">class</span>
+                                        <span class="typ">BasicTemplateAlgorithm</span>
+                                        <span class="str">QCAlgorithm</span>
+                                        <spa class="pln"></spa>
+                                        <span class="kwd">def</span>
+                                    </pre>
+                                </div>
+                            </div>
+                            <div class="check-out">
+                                <div>
+                                    <p class="text-white text-demi-bold" style="font-size: 18px;">Researcher Pack</p>
+                                    <span>Everything you Need for Quantitative Trading Research</span>
+                                </div>
+                                <div>
+                                    <span class="text-white text-demi-bold" style="font-size: 18px; margin-right: 34px;">$48</span>
+                                    <a type="button" class="btn btn-default btn-gold text-demi-bold" style="font-size: 18px; padding: 14px 42px;">Check Out</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dotted-bg left"></div>
+                    <div class="dotted-bg right"></div>
+                    <div class="hero-stripes left">
+                        <img src="./design/HeroHeader/stripes-left.svg">
+                    </div>
+                    <div class="hero-stripes right">
+                        <img src="./design/HeroHeader/stripes-right.svg">
+                    </div>
+                </div>
+            </div><!-- Hero header -->
+
+            <!-- section 1 -->
+            <div class="section oblique" style="background-color: #fff; z-index: 2;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-4 col-lg-offset-2">
+                            <div class="section-icon">
+                                <a href="#"><img src="./design/Section1/section-icon.svg"></a>
+                            </div>
+                            <h4 class="text-demi-bold" style="margin-bottom: 20px;">End to End Quantitative Trading Infrastructure</h4>
+                            <p>The QuantConnect integration with Binance provides a complete, end to end, quantitative trading infrastructure following the entire quant research journey.</p>
+                            <p>Starting with Research, QuantConnect provides robust Jupyter Lab research notebooks to load Binance historical data since 2017, curated and updated by our data engineering team. Through partnerships QuantConnect is able to offer the data for download to perform research on-premise.</p>
+                            <p>High accuracy backtesting with full spread and fee modeling can then be performed on premise or in the QuantConnect cloud tapping our 5GHz backtesting machines. You can explore alternative crypto datasets to harness their alpha.</p>
+                            <p>Our co-located, institutional quality, live-trading environment can securely host your strategy and connect with the Binance API’s through redundant 10GB dedicated internet connections, giving your unparalleled security and comfort in your live trading.</p>
+                            <h4 class="text-demi-bold" style="margin-top:45px; margin-bottom: 20px;">Trade with Deep Platform Support</h4>
+                            <a type="button" class="btn btn-default btn-gold text-demi-bold" style="font-size: 18px; padding: 14px 25px;">Deploy Your Algorithm</a>
+                        </div>
+                        <div class="col-lg-5 col-lg-offset-1">
+                            <img src="./design/Section1/section1-graphic.svg" style="width: 100%;">
+                        </div>
+                    </div>
+                </div>
+                <div class="section-stripes right">
+                    <img src="./design/Section1/section-stripes-right.svg">
+                </div>
+                <div class="section-stripes left">
+                    <img src="./design/Section1/section-stripes-left.svg">
+                </div>
+                <div class="section-dotted left"></div>
+                <div class="section-dotted right"></div>
+            </div><!-- section 1 -->
+
+            <!-- section 2 -->
+            <div class="section" style="padding: 90px 0 180px;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3 col-lg-offset-2">
+                            <div class="section-icon" style="margin-top:50px;">
+                                <a href="#"><img src="./design/Section2/section2-icon.svg"></a>
+                            </div>
+                            <h4 class="text-white text-demi-bold" style="margin-bottom: 16px;">Live Trading Professionals</h4>
+                            <p class="text-white">Since 2014, QuantConnect has pioneered live trading of quantitative strategies hosting more than 150,000 live strategies and trading more than $1B notional volume every month. We have a track record of awesome uptime, with many strategies being online for 18 months straight before requiring maintenance or rebooting. This level of commitment to your strategy stability sets QuantConnect apart in the world.</p>
+                            <div style="margin: 55px 0 20px 1px;">
+                                <h4 class="text-white text-demi-bold" style="margin-bottom: 20px;">Deploy Strategy Live Today</h4>
+                                <a type="button" class="btn btn-default btn-gold text-demi-bold" style="font-size: 18px; padding: 14px 30px;">Trade Live</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-lg-offset-1">
+
+                            <div class="deploy-method">
+                                <div class="deploy-method-icon">
+                                    <img src="./design/Section2/section2-sms.svg">
+                                </div>
+                                <div class="deploy-detail">
+                                    <p class="text-demi-bold text-white" style="margin-bottom: 10px;">SMS</p>
+                                    <p class="text-white">Easily create bespoke notifications on algorithm activity and strategy movements.</p>
+                                </div>
+                            </div>
+
+                            <div class="deploy-method">
+                                <div class="deploy-method-icon">
+                                    <img src="./design/Section2/section2-telegram.svg">
+                                </div>
+                                <div class="deploy-detail">
+                                    <p class="text-demi-bold text-white" style="margin-bottom: 10px;">Telegram Alerts</p>
+                                    <p class="text-white">Create your own telegram bot to stream notifications of your strategy to your private channels and groups. </p>
+                                </div>
+                            </div>
+
+                            <div class="deploy-method">
+                                <div class="deploy-method-icon">
+                                    <img src="./design/Section2/section2-webhook.svg">
+                                </div>
+                                <div class="deploy-detail">
+                                    <p class="text-demi-bold text-white" style="margin-bottom: 10px;">Webhook Events</p>
+                                    <p class="text-white">Call API’s and external servers to trigger services based on your trading strategy activity with our web hook alerting.</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-dotted left"></div>
+                <div class="section-dotted right"></div>
+            </div><!-- section2 -->
+
+            <!-- section 3 -->
+            <div class="section oblique" style="background-color: #fff; z-index: 2;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 col-lg-offset-3">
+                            <div class="text-center" style="margin-bottom: 42px;">
+                                <a href="#"><img src="./design/Section3/section3-icon.svg"></a>
+                            </div>
+                            <h4 class="section-title text-demi-bold">Rich Order Support</h4>
+                            <p class="text-center">Route orders to Binance with a standard API, through QuantConnect’s brokerage agnostic implementation. </p>
+                            <p class="text-center">If you ever want to test another execution venue you can deploy your strategy to another location without changing a single line of code. QuantConnect fully models supported order types in backtesting, paper trading, and all the way through to the brokerage execution.</p>
+                            <div class="text-center">
+                                <img src="./design/Section3/section3-graphic.svg">
+                            </div>
+                            <div class="checklist">
+                                <ul>
+                                    <li>
+                                        <a href="#"> 
+                                            <span class="icon-container"><img src="./design/Section3/section3-checkmark.svg"></span>market
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#"> 
+                                            <span class="icon-container"><img src="./design/Section3/section3-checkmark.svg"></span>limit
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#"> 
+                                            <span class="icon-container"><img src="./design/Section3/section3-checkmark.svg"></span>stop
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#"> 
+                                            <span class="icon-container"><img src="./design/Section3/section3-checkmark.svg"></span>stop limit
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#"> 
+                                            <span class="icon-container"><img src="./design/Section3/section3-checkmark.svg"></span>stop market
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="lunch-algorithum">
+                                <h4 class="text-demi-bold">Spend Your Time on Alpha</h4>
+                                <a type="button" class="btn btn-default btn-gold text-demi-bold" style="font-size: 18px; padding: 15px 33px;">Launch Algorithm Live</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-stripes right">
+                    <img src="./design/Section1/section-stripes-right.svg">
+                </div>
+                <div class="section-stripes left">
+                    <img src="./design/Section1/section-stripes-left.svg">
+                </div>
+                <div class="section-dotted left"></div>
+                <div class="section-dotted right"></div>
+
+            </div><!-- section -->
+
+            <!-- section 4 -->
+            <div class="section" style="padding: 50px 0 70px;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 col-lg-offset-3">
+                            <div class="high-modeling-container">
+                                <div class="text-center" style="margin-bottom: 42px;">
+                                    <a href="#"><img src="./design/section4/section4-icon.svg"></a>
+                                </div>
+                                <h4 class="section-title text-white text-demi-bold">High Fidelity Modeling</h4>
+                                <p class="text-white text-center">Use the same data for research, backtest, and live trading to generate the highest accuracy models possible. Realistic research saves you time and money in live trading.</p>
+                                <div class="graphic">
+                                    <img src="./design/Section4/section4-graphic.svg">
+                                </div>
+                            </div>
+
+                            <div class="modeling">
+                                <div class="modeling-method">
+                                    <img src="./design/Section4/section4-jupyter-icon.svg">
+                                    <p class="text-white text-center">Research in Jupyer  on Binance data</p>
+                                </div>
+                                <div class="modeling-method">
+                                    <img src="./design/Section4/section4-backtest-icon.svg">
+                                    <p class="text-white text-center">Backtest with fees and spread from binance currency pairs</p>
+                                </div>
+                                <div class="modeling-method">
+                                    <img src="./design/Section4/section4-binance-icon.svg">
+                                    <p class="text-white text-center">Paper trade using the binance feed for realistic forward trading</p>
+                                </div>
+                            </div>
+                            <div class="text-center" style="padding:0 5rem;">
+                                <p class="text-white text-center" style="margin-top: 25px;">Simulate your strategy with accurate Binance bid-ask spreads before deploying it live to improve your chances in live trading</p>
+                                <a type="button" class="btn btn-default btn-gold text-demi-bold" style="font-size: 18px; padding: 15px 45px;">Test Your Ideas</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div><!-- section 4 -->
+
+            <!-- section 5 -->
+            <div class="section" style="background-color: #F8F9FB; padding: 150px 0 90px;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-4 col-lg-offset-2">
+                            <div class="section-icon">
+                                <a href="#"><img src="./design/Section5/section5-icon.svg"></a>
+                            </div>
+                            <h4 class="text-demi-bold" style="margin-bottom: 20px;">Join a Global Community of 170K Quants</h4>
+                            <p>Hundreds of thousands of people have chosen QuantConnect as their quantitative analytics platform, powered by a rich API and integrations with dozens of exchanges.</p>
+
+                            <div class="about-us">
+                                <ul>
+                                    <li>
+                                        <h4 class="text-demi-bold text-center">$1B</h4>
+                                        <p class="text-center">Notional<br>Monthly</p>
+                                    </li>
+                                    <li>
+                                        <h4 class="text-demi-bold text-center">50,000</h4>
+                                        <p class="text-center">Active<br>Monthly</p>
+                                    </li>
+                                    <li>
+                                        <h4 class="text-demi-bold text-center">20,000</h4>
+                                        <p class="text-center">Backtest Simulations Daily</p>
+                                    </li>
+                                    <li>
+                                        <h4 class="text-demi-bold text-center">140,000</h4>
+                                        <p class="text-center">Live Algorithms Since 2015.</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-5">
+                            <div class="map">
+                                <img src="./design/Section5/graphic.png" class="w-100">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-8 col-lg-offset-2">
+                            <div class="testimonials">
+                                <h4 class="text-demi-bold" style="margin-bottom: 30px;">What they say</h4>
+
+                                <div class="row">
+                                    <div class="col-lg-12 col-xl-4">
+                                        <div class="testimonial">
+                                            <div class="author-info">
+                                                <div class="author-avatar">
+                                                    <img src="./design/Section5/section5-avatars/av1.png">
+                                                </div>
+                                                <div class="author-details">
+                                                    <p class="author-name">John Smith</p>
+                                                    <p class="author-skill">CoolWave CEO</p>
+                                                </div>
+                                            </div>
+                                            <div class="testimonial-content">
+                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="testimonial">
+                                            <div class="author-info">
+                                                <div class="author-avatar">
+                                                    <img src="./design/Section5/section5-avatars/av4.png">
+                                                </div>
+                                                <div class="author-details">
+                                                    <p class="author-name">John Smith</p>
+                                                    <p class="author-skill">CoolWave CEO</p>
+                                                </div>
+                                            </div>
+                                            <div class="testimonial-content">
+                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12 col-xl-4">
+                                        <div class="testimonial">
+                                            <div class="author-info">
+                                                <div class="author-avatar">
+                                                    <img src="./design/Section5/section5-avatars/av2.png">
+                                                </div>
+                                                <div class="author-details">
+                                                    <p class="author-name">John Smith</p>
+                                                    <p class="author-skill">CoolWave CEO</p>
+                                                </div>
+                                            </div>
+                                            <div class="testimonial-content">
+                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley.</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="testimonial">
+                                            <div class="author-info">
+                                                <div class="author-avatar">
+                                                    <img src="./design/Section5/section5-avatars/av5.png">
+                                                </div>
+                                                <div class="author-details">
+                                                    <p class="author-name">John Smith</p>
+                                                    <p class="author-skill">CoolWave CEO</p>
+                                                </div>
+                                            </div>
+                                            <div class="testimonial-content">
+                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12 col-xl-4">
+                                        <div class="testimonial">
+                                            <div class="author-info">
+                                                <div class="author-avatar">
+                                                    <img src="./design/Section5/section5-avatars/av3.png">
+                                                </div>
+                                                <div class="author-details">
+                                                    <p class="author-name">John Smith</p>
+                                                    <p class="author-skill">CoolWave CEO</p>
+                                                </div>
+                                            </div>
+                                            <div class="testimonial-content">
+                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="testimonial">
+                                            <div class="author-info">
+                                                <div class="author-avatar">
+                                                    <img src="./design/Section5/section5-avatars/av6.png">
+                                                </div>
+                                                <div class="author-details">
+                                                    <p class="author-name">John Smith</p>
+                                                    <p class="author-skill">CoolWave CEO</p>
+                                                </div>
+                                            </div>
+                                            <div class="testimonial-content">
+                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                
+                    </div>
+
+                    <div class="text-center">
+                        <h4 class="text-demi-bold" style="margin-bottom: 25px;">Join the Community</h4>
+                        <a type="button" class="btn btn-default btn-gold text-demi-bold" style="font-size: 18px; padding: 14px 50px;">Sign Up</a>
+                    </div>
+                </div>
+
+                <div class="testimonials-stripe">
+                    <img src="./design/Section5/section5-stripes.svg">
+                </div>
+
+            </div><!-- section 5 -->
+
+             <!-- Hero Footer -->
+            <div class="section" style="padding:100px 0 65px;">
+                <div class="container">
+                    <div class="hero-footer">
+                        <div class="row">
+                            <div class="col-lg-6 col-lg-offset-3">
+                                <div class="hero-logo">
+                                    <img src="./design/HeroHeader/Binance_logo.svg" class="logo" alt="Hero Header Logo">
+                                </div>
+                                <h4 class="text-center text-white">Launch your Binance algorithmic trading journey on QuantConnect.<br> 
+                                    Focus on building your strategy and leave the execution with us.</h4>
+                                <div class="check-out text-center">
+                                    <h4 class="text-white">Go Live Today</h4>
+                                    <h2 class="qc-gold-text text-demi-bold">Researcher Pack </h2>
+                                    <h4 class="text-white" style="margin-bottom: 52px;">All the essentials for your algorithmic trading with Biannce.Research, backtest and Live trade with professional grade infrastructure</h4>
+                                    <div class="price">
+                                        <h4>$48/mo</h4>
+                                    </div>
+                                    <a type="button" class="btn btn-default btn-gold text-demi-bold" style="font-size: 18px; padding: 10px 42px;">Check Out</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="footer-logo">
+                            <img src="./design/Section6/qc-logo.svg">
+                        </div>
+                        <p class="copyright">Copyright &copy;2021 Quantconnect</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- Do not Update below here  -->
+
+
+    </div>
+
+    <style>
+        .footer-trap,
+        footer {
+            background-color: #202024;
+            padding: 3rem 0;
+        }
+
+        p {
+            color: #313131;
+        }
+
+        p.header-p {
+            color: #8F9CA3;
+            font-family: Norpeth-DemiBold;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 850px) {
+            footer {
+                background: none !important;
+            }
+        }
+
+
+        .footer-trap .logo-column,
+        footer .logo-column {
+            text-align: left;
+            color: #f5ae29;
+        }
+
+        .footer-trap .logo,
+        footer .logo {
+            height: 4em;
+            padding-bottom: 1em;
+        }
+
+        .footer-trap .links-columns .col,
+        footer .links-columns .col {
+            padding-top: 1.5em;
+        }
+
+        .footer-trap .links-columns a, footer .links-columns a {
+            color: #ffffff;
+            font-weight: normal;
+            text-decoration: none;
+        }
+
+        .footer-trap .links-columns a:hover,
+        footer .links-columns a:hover {
+            text-decoration: none;
+            color: #f5ae29;
+        }
+
+        .footer-trap .links-columns,
+        footer .links-columns {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #707070;
+        }
+
+        .footer-trap .github-column,
+        footer .github-column {
+            padding-top: 2em;
+            background-color: #202024;
+        }
+
+        body {
+            min-height: 100vh;
+        }
+
+        .footer-wrapper {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+
+        }
+
+        .footer-trap {
+            visibility: hidden;
+        }
+
+        .pre-footer {
+            background-size: 100%;
+            background-position: center bottom;
+            min-height: 150px;
+            position: relative;
+        }
+
+        .pre-footer .banner {
+            margin-top: 300px;
+            background-color: #f8f8f8;
+            text-align: center;
+            border-top: solid 1px #ccc;
+            bottom: 0;
+            position: absolute;
+        }
+
+        @media (max-width: 740px) {
+            .footer-trap .logo,
+            footer .logo {
+                height: 3em;
+            }
+        }
+    </style>
+
+    <div class="row pre-footer">
+        <div class="col-xs-12 banner">
+            <h2 style="margin: 15px 0;">
+                Join QuantConnect for Free
+                <a type="button" class="btn btn-default btn-lg btn-gold" href="https://beta.quantconnect.com/login/?target=Web" style="height: 68px;font-size: 28px;padding: 12px 40px;">
+                    Sign Up </a>
+            </h2>
+        </div>
+    </div>
+    <div>
+        <div class="footer-trap">
+            <div class="row">
+                <div class="col-xs-10 col-xs-offset-1 col-lg-8 col-lg-offset-2">
+                    <div class="row">
+                        <div class="col-xs col-md-4 logo-column">
+                            <img src="./resources/quantconnect_logo_byw.png" class="logo" alt="QuantConnect Logo">
+                            <p style="font-size: 16px; text-align: left;color: #fff">
+                                QuantConnect™ 2021. All Rights Reserved
+                            </p>
+                        </div>
+                        <div class="col-md-8 links-columns">
+                            <div class="row">
+                                <div class="col-xs-6 col-md-4 col-md-offset-1 col-lg-offset-1 col">
+                                    <p style="font-family: Norpeth-DemiBold; font-size: 16px; text-transform: uppercase; color: #8f9ca3;margin-bottom: 1em;">
+                                        Technology</p>
+                                    <ul class="list-unstyled">
+                                        <li style="font-size: 16px;"><a href="https://beta.quantconnect.com/terminal">Algorithm
+                                            Lab</a></li>
+                                        <li style="font-size: 16px;"><a href="https://beta.quantconnect.com/docs">Documentation</a>
+                                        </li>
+                                        <li style="font-size: 16px;"><a href="https://beta.quantconnect.com/forum">Community</a>
+                                        </li>
+                                        <li style="font-size: 16px;"><a href="https://beta.quantconnect.com/tutorials">Tutorials</a>
+                                        </li>
+                                        <li style="font-size: 16px;"><a href="https://beta.quantconnect.com/data">Data
+                                            Library</a></li>
+                                        <li style="font-size: 16px;"><a href="https://beta.quantconnect.com/status">System
+                                            Status</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-xs-6 col-md-4 col-lg-4 col">
+                                    <p style="font-family: Norpeth-DemiBold; font-size: 16px; text-transform: uppercase; color: #8f9ca3;margin-bottom: 1em;">
+                                        Company</p>
+                                    <ul class="list-unstyled">
+                                        <li style="font-size: 16px;">
+                                            <a href="https://beta.quantconnect.com/about">About</a></li>
+                                        <li style="font-size: 16px;"><a href="https://beta.quantconnect.com/blog">Our
+                                            Blog</a></li>
+                                        <li style="font-size: 16px;"><a href="https://beta.quantconnect.com/contact">Contact</a>
+                                        </li>
+                                        <li style="font-size: 16px;"><a href="https://beta.quantconnect.com/pricing">Pricing</a>
+                                        </li>
+                                        <li style="font-size: 16px;"><a href="https://beta.quantconnect.com/terms">Terms
+                                            &amp; Conditions</a></li>
+                                        <li style="font-size: 16px;"><a href="https://beta.quantconnect.com/privacy">Privacy
+                                            Policy</a></li>
+                                    </ul>
+                                </div>
+                                <div class="hidden-sm hidden-xs col-md-3 col">
+                                    <a href="https://beta.quantconnect.com/lean">
+                                        <p style="font-family: Norpeth-DemiBold; font-size: 16px; text-transform: uppercase; color: #8f9ca3;margin-bottom: 1em;">
+                                            LEAN</p></a>
+                                    <ul class="list-unstyled">
+                                        <li>
+                                            <iframe src="./resources/github-btn.html" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20" title="github fork"></iframe>
+                                        </li>
+                                        <li>
+                                            <iframe src="./resources/github-btn(1).html" allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20" title="github star"></iframe>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-wrapper">
+        <footer class="row">
+            <div class="col-xs-10 col-xs-offset-1 col-lg-8 col-lg-offset-2">
+                <div class="row">
+                    <div class="col-xs col-md-4 logo-column">
+                        <img src="./resources/quantconnect_logo_byw.png" class="logo" alt="QuantConnect Logo">
+                        <p style="font-size: 16px; text-align: left;color: #fff">
+                            QuantConnect™ 2021. All Rights Reserved
+                        </p>
+                    </div>
+                    <div class="col-md-8 links-columns">
+                        <div class="row">
+                            <div class="col-xs-6 col-md-4 col-md-offset-1 col-lg-offset-1 col">
+                                <p style="font-family: Norpeth-DemiBold; font-size: 16px; text-transform: uppercase; color: #8f9ca3;margin-bottom: 1em;">
+                                    Technology</p>
+                                <ul class="list-unstyled">
+                                    <li style="font-size: 16px;"><a href="https://beta.quantconnect.com/terminal">Algorithm
+                                        Lab</a></li>
+                                    <li style="font-size: 16px;"><a href="https://beta.quantconnect.com/docs">Documentation</a>
+                                    </li>
+                                    <li style="font-size: 16px;">
+                                        <a href="https://beta.quantconnect.com/forum">Community</a></li>
+                                    <li style="font-size: 16px;"><a href="https://beta.quantconnect.com/tutorials">Tutorials</a>
+                                    </li>
+                                    <li style="font-size: 16px;"><a href="https://beta.quantconnect.com/data">Data
+                                        Library</a></li>
+                                    <li style="font-size: 16px;"><a href="https://beta.quantconnect.com/status">System
+                                        Status</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-xs-6 col-md-4 col-lg-4 col">
+                                <p style="font-family: Norpeth-DemiBold; font-size: 16px; text-transform: uppercase; color: #8f9ca3;margin-bottom: 1em;">
+                                    Company</p>
+                                <ul class="list-unstyled">
+                                    <li style="font-size: 16px;"><a href="https://beta.quantconnect.com/about">About</a>
+                                    </li>
+                                    <li style="font-size: 16px;"><a href="https://beta.quantconnect.com/blog">Our
+                                        Blog</a></li>
+                                    <li style="font-size: 16px;">
+                                        <a href="https://beta.quantconnect.com/contact">Contact</a></li>
+                                    <li style="font-size: 16px;">
+                                        <a href="https://beta.quantconnect.com/pricing">Pricing</a></li>
+                                    <li style="font-size: 16px;"><a href="https://beta.quantconnect.com/terms">Terms
+                                        &amp; Conditions</a></li>
+                                    <li style="font-size: 16px;"><a href="https://beta.quantconnect.com/privacy">Privacy
+                                        Policy</a></li>
+                                </ul>
+                            </div>
+                            <div class="hidden-sm hidden-xs col-md-3 col">
+                                <a href="https://beta.quantconnect.com/lean">
+                                    <p style="font-family: Norpeth-DemiBold; font-size: 16px; text-transform: uppercase; color: #8f9ca3;margin-bottom: 1em;">
+                                        LEAN</p></a>
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <iframe src="./resources/github-btn(2).html" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20" title="github fork"></iframe>
+                                    </li>
+                                    <li>
+                                        <iframe src="./resources/github-btn(3).html" allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20" title="github star"></iframe>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+</div>
+<template type="text/qc-template" id="photoTemplate"></template>
+<script type="text/javascript" src="./resources/bootstrap-3.4.1.min.js.download"></script>
+<script type="text/javascript" src="./resources/prettify.js.download"></script>
+<script type="text/javascript" src="./resources/f(1).txt"></script>
+<script type="text/javascript" src="./resources/jquery.perfect-scrollbar.min.js.download"></script>
+<script type="text/javascript" src="./resources/pusher.min.js.download"></script>
+<script type="text/javascript" src="./resources/qc.ini.js.download"></script>
+<script type="text/javascript" src="./resources/jquery.sparkline.min.js.download"></script>
+<script type="text/javascript" src="./resources/jquery.perfect-scrollbar.min.js(1).download"></script>
+<script type="text/javascript" src="./resources/qc.fund.updater.js.download"></script>
+<script type="text/javascript" src="./resources/algoliasearchLite.min.js.download"></script>
+<script type="text/javascript" src="./resources/Searchbox.js.download"></script>
+<script type="text/javascript" src="./resources/bootbox.min.js.download"></script>
+<script type="text/javascript" src="./resources/jquery.form.min.js.download"></script>
+<script type="text/javascript" src="./resources/qc.forms.js.download"></script>
+<script type="text/javascript" src="./resources/qc.main.js.download"></script>
+</body>
+</html>

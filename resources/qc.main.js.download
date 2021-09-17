@@ -1,0 +1,266 @@
+/*
+ QUANTCONNECT.Com - Democratizing Finance. Empowering Individuals
+ Created November-2011 by Jared Broad
+ MAIN Controller
+ */
+this.qcm = new function () {
+
+    /*
+     *	Global Initialisation
+     */
+    this.init = function () {
+
+    };
+
+    /*
+     *	Display the sign up dialog.
+     */
+    this.signUp = function () {
+        window.location.href = 'https://www.quantconnect.com/signup';
+        return false;
+    };
+
+
+    /*
+     *   Display Error message in QP dialog.
+     */
+    this.error = function (title, message) {
+        $('#dialogError .title').html(title);
+        $('#dialogError .message').html(message);
+        //Asynchronously Save the Error to the database for future debugging.
+        $.ajax({
+            url: "/index.php",
+            dataType: "json",
+            data: {
+                key: "processError",
+                title: title,
+                message: message
+            }
+        });
+        //Load Dialog:
+        $('#dialogError').modal();
+        return false;
+    };
+
+
+    /*
+     *   Display information dialog, display message
+     */
+    this.info = function (title, message, callback) {
+        //Populate the information dialog
+        $('#dialogInfo .title').html(title);
+        $('#dialogInfo .message').html(message);
+        //Attach the event to the infoButton:
+        $('#dialogInfo .button').unbind("click").click(function () {
+            if (callback !== null) {
+                callback();
+            }
+        });
+        //Open the Modal
+        $('#dialogInfo').modal();
+        return false;
+    };
+
+
+    /*
+     *	Display success dialog; display message.
+     */
+    this.success = function (title, message, callback) {
+        $('#dialogSuccess .title').html(title);
+        $('#dialogSuccess .message').html(message);
+        //Attach the event to the successButton:
+        $('#dialogSuccess .button').unbind("click").click(function () {
+            if (callback !== null) {
+                callback();
+            }
+        });
+        //Open the Modal
+        $('#dialogSuccess').modal();
+        return false;
+    };
+
+
+    /*
+     *	Display confirmation dialog.
+     */
+    this.confirm = function (title, message, yesCallback, noCallback) {
+        $('#dialogConfirm .title').html(title);
+        $('#dialogConfirm .message').html(message);
+        //Set the callbacks:
+        $('#dialogConfirm .yesButton').unbind("click").click(function () {
+            if (yesCallback != null) {
+                yesCallback();
+            }
+        });
+        $('#dialogConfirm .noButton').unbind("click").click(function () {
+            if (noCallback != null) {
+                noCallback();
+            }
+        });
+        //Load the modal:
+        $('#dialogConfirm').modal({keyboard: false, backdrop: 'static'});
+        return false;
+    };
+
+
+    /*
+     *	Display warning message dialog.
+     */
+    this.warning = function (title, message, callback) {
+        $('#dialogWarning .title').html(title);
+        $('#dialogWarning .message').html(message);
+        //Bind the click event
+        $('#dialogWarning .button').unbind("click").click(function () {
+            if (callback !== null) {
+                callback();
+            }
+        });
+        //Open the Modal
+        $('#dialogWarning').modal();
+        return false;
+    };
+
+
+    /*
+     * 	Focus on a form element, flash its background.
+     */
+    this.focus = function (id) {
+        $(id).addClass('ui-state-highlight');
+        setTimeout(function () {
+            $(id).removeClass('ui-state-highlight');
+        }, 200);
+        $(id).focus();
+    };
+
+
+    /*
+     * 	Open a popup Window:
+     */
+    this.popup = function (url, title, width, height) {
+        var iTop = (window.innerHeight - height) / 2;
+        var iLeft = (window.innerWidth - width) / 2;
+        var config = 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no,width=' + width + ',height=' + height + ',top=' + iTop + ', left=' + iLeft;
+        var myWindow = window.open(url, title, config);
+        myWindow.focus();
+    };
+
+
+    /*
+     *	Load the Facebook and Twitter Sharers:
+     */
+    this.share = function (sMethod, sTitle) {
+
+        //Share this message:
+        switch (sMethod) {
+            case 'facebook':
+                $('#dialogShare .facebook').show();
+                $('#dialogShare .email').hide();
+                $('#dialogShare .title').html(sTitle);
+                $('#dialogShare').modal({overlayClose: true, minHeight: 125, minWidth: 500, escClose: true});
+                break;
+
+            case 'twitter':
+                qcm.popup("https://twitter.com/intent/tweet?text=" + sTitle + " " + window.location.href, "Share on Twitter", 640, 320);
+                break;
+
+            case 'email':
+                //Open the Modal
+                $('#dialogShare .email').show();
+                $('#dialogShare .facebook').hide();
+                $('#dialogShare .title').html("Share this with a friend");
+                $('#dialogShare').modal({overlayClose: true, minHeight: 125, minWidth: 500, escClose: true});
+                break;
+        }
+    };
+
+
+    /*
+     * 	Load the help dialog, AJAX in the content.
+     */
+    this.help = function (key) {
+
+        $('#dialogHelp').dialog('open');
+        $('#helpTitle').html('Help Loading');
+        $('#helpContent').html('Help Loading, Please Wait...');
+
+        $.ajax({
+            url: "/index.php",
+            dataType: "json",
+            data: {
+                key: "loadHelp",
+                helpKey: key
+            },
+            success: function (data) {
+                //Set the HTML
+                if (data.title === null) {
+                    $('#helpTitle').html("Help Not Found");
+                    $('#helpContent').html("Sorry, the help you have selected cannot be found.");
+                } else {
+                    $('#helpTitle').html(data.title);
+                    $('#helpContent').html(data.content);
+                }
+                //Recenter the dialog:
+                $('#help').dialog('option', 'position', 'center');
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                //Error Loading Help: Set to Not Available:
+                $('#helpTitle').html('Help Unavailable');
+                $('#helpContent').html('Sorry help is not available at this time. Please check your internet connection and try again later.');
+            }
+        });
+    };
+
+
+    /*
+     *	Refresh the page:
+     */
+    this.refresh = function () {
+        window.location.reload();
+    };
+
+
+    /*
+     *	Common Display Elements:
+     *	Subtract screen space for header and footer elements.
+     */
+    this.availHeight = function () {
+        var h = ($(window).height() - 140);
+        return h;
+    };
+
+    this.availWidth = function () {
+        var w = ($(window).width() - 2);
+        return w;
+    };
+
+    /*
+     *	Helper Routine to Refresh Main Page:
+     */
+    this.go = function (url) {
+        window.location.href = url;
+    };
+
+    /*
+     *	JS Implementation of Replace All
+     */
+    this.replaceAll = function (hayStack, needle, newValue) {
+        var newHayStack = "";
+        while (hayStack !== newHayStack) {
+            if (newHayStack === "") {
+                newHayStack = hayStack;
+            } else {
+                hayStack = newHayStack;
+            }
+            newHayStack = newHayStack.replace(needle, newValue);
+        }
+        return newHayStack;
+    };
+
+
+    /*
+     *	Capitalise the first letter:
+     */
+    this.capitalise = function (string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    };
+};

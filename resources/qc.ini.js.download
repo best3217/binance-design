@@ -1,0 +1,24 @@
+var QCSIni = (function () {
+    function QCSIni() {
+    }
+    QCSIni.IniStripe = function () {
+        if (typeof Stripe != "undefined") {
+            Stripe.setPublishableKey(qc.ini.stripePublicKey);
+        }
+        else if (window.location.protocol == 'https:') {
+            setTimeout(QCSIni.IniStripe, 1000);
+        }
+    };
+    QCSIni.GetPusher = function () {
+        if (this._Pusher == null) {
+            this._Pusher = new Pusher(qc.ini.pusherPublicKey, {
+                encrypted: true,
+                authEndpoint: '/terminal/processPusherPresence'
+            });
+        }
+        return this._Pusher;
+    };
+    QCSIni._Pusher = null;
+    return QCSIni;
+}());
+//# sourceMappingURL=qc.ini.js.map

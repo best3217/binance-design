@@ -31,6 +31,7 @@
     <link type="text/css" rel="stylesheet" href="./resources/qc.code.css">
     <link type="text/css" rel="stylesheet" href="./resources/jquery.perfect-scrollbar.min.css">
     <script type="text/javascript" src="./resources/jquery-3.4.1.min.js.download"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@500&display=swap" rel="stylesheet">
     <title>Stand Alone - QuantConnect.com</title>
 </head>
 <body>
@@ -265,14 +266,20 @@
                                     <p>Integrate Binance using few lines of code</p>
                                 </div>
                                 <div class="code-example-body">
-                                    <img src="./design/HeroHeader/Algoridum.png">
-                                    <!-- <pre>
-                                        <span class="kwd">class</span>
-                                        <span class="typ">BasicTemplateAlgorithm</span>
-                                        <span class="str">QCAlgorithm</span>
-                                        <spa class="pln"></spa>
-                                        <span class="kwd">def</span>
-                                    </pre> -->
+                                        <pre>
+                                                <p><span class="kwd">class</span> <span class="typ">BasicTemplateAlgorithm(</span><span class="str">QCAlgorithm</span><span class="typ">)</span></p>
+                                                <p>       <span class="kwd">def</span> <span class="typ">Initialize</span><span class="pun">(</span><span class="kwd">self</span><span class="pun">):</span></p>
+                                                <p>            <span class="des">‘’’Initialise the data and resolution required, as well as the 
+      cash and start-end dates for your algorithm. All algorithms must initialized.’’’</span></p>
+                                            <p>        <span class="kwd">pass</span></p>
+
+                                            <p>         <span class="kwd">def</span><span class="typ">OnData</span><span class="pun">(</span><span class="kwd">self</span><span class="pun">);</span></p>
+                                            <p><span class="des">              ‘’’OnData event is the primary entry point for your algorithm. Each new data
+            point will be pumped in here. data is a Slice object keyed by symbol containing
+            the stock data’’’</span></p>
+                                            <p>        <span class="kwd">pass</span></p>
+                                            <span class="pun"></span>
+                                        </pre>  
                                 </div>
                             </div>
                             <div class="check-out">
@@ -673,7 +680,7 @@
                         <p class="copyright">Copyright &copy;2021 Quantconnect</p>
                     </div>
                 </div>
-            </div>
+            </div><!-- Hero Footer -->
 
         </div>
         <!-- Do not Update below here  -->

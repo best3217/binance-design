@@ -9,6 +9,9 @@
     }
 }
 
+/**
+ * section style
+ */
 .section {
     position: relative;
     z-index: 2;
@@ -119,7 +122,8 @@
     z-index: 4;
     
     &.right {
-        top: -13.5vh;
+        top: 0;
+        margin-top: -7.1vw;
         transform: rotate(1deg);
         right: 0;
     }
@@ -131,11 +135,9 @@
     }
 }
 
-.hero-logo {
-    margin-bottom: 65px;
-    text-align: center;
-}
-
+/**
+ * Hero Header style
+ */
 .hero-header {
     position: relative;
     padding: 130px 0 205px;
@@ -159,7 +161,7 @@
 
         .code-example-body {
             background-color: #0A0A0A;
-            padding: 34px 26px;
+            padding: 0px 26px;
             border-bottom-left-radius: 10px;
             border-bottom-right-radius: 10px;
 
@@ -167,25 +169,36 @@
                 width: 100%;
             }
 
-            // .pun {
-            //     color: #8F9CA3;
-            // }
+            p {
+                margin: 0;
+                margin-bottom: -2.25rem;
+                font-size: 1rem;
+            }
 
-            // .des {
-            //     color: #5C6370;
-            // }
-    
-            // .kwd {
-            //     color: #C975D0;
-            // }
+            pre {
+                background-color: transparent;
+                border:none !important;
+            }
 
-            // .str {
-            //     color: #94BE77;
-            // }
+            .pun {
+                color: #8F9CA3;
+            }
+
+            .des {
+                color: #5C6370;
+            }
     
-            // .typ {
-            //     color: #2696D3;
-            // }
+            .kwd {
+                color: #C975D0;
+            }
+
+            .str {
+                color: #94BE77;
+            }
+    
+            .typ {
+                color: #2696D3;
+            }
         }
     }
 
@@ -267,6 +280,14 @@
     }
 }
 
+.hero-logo {
+    margin-bottom: 65px;
+    text-align: center;
+}
+
+/**
+ * Hero footer style
+ */
 .hero-footer {
     position: relative;
     padding: 0 60px;
@@ -335,6 +356,9 @@
     }
 }
 
+/**
+ * Style for a Deploy Method in section2
+ */
 .deploy-method {
     margin-bottom: 35px;
 
@@ -385,6 +409,9 @@
     }
 }
 
+/**
+ * Style for a Modeling in section4
+ */
 .high-modeling-container {
     margin: 0 5rem;
 
@@ -481,6 +508,9 @@
      }
  }
 
+ /**
+ * Style for a algorithum button in section3
+ */
  .lunch-algorithum {
      display: flex;
      justify-content: center;
@@ -491,6 +521,9 @@
     }
  }
 
+/**
+ * Style for a map button in section4
+ */
  .map {
     margin-top: 60px;
 
@@ -499,6 +532,9 @@
      }
  }
 
+ /**
+ * Style for a About part button in section4
+ */
  .about-us {
     position: absolute;
     z-index: 2;
@@ -548,6 +584,9 @@
     }
  }
 
+ /**
+ * Testimonial footer style
+ */
  .testimonials {
      margin-top: 125px;
      padding: 35px 0;

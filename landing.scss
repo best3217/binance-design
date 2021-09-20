@@ -71,11 +71,11 @@
             &.left {
                 left: 0;
                 top: -1.5rem;
-                background-image: url("../design/Section1/section1-dotted-bg-left1.png");
+                background-image: url("../design/Section1/section1-dotted-bg-left.png");
                 transform: rotate(357deg);
 
                 &.support {
-                    background-image: url("../design/section3/section3-dotted-bg-left1.png");
+                    background-image: url("../design/section3/section3-dotted-bg-left.png");
                     transform: rotate(356deg);
                 }
 
@@ -87,11 +87,11 @@
             &.right {
                 right: 0;
                 bottom: 0;
-                background-image: url("../design/Section1/section1-dotted-bg-right1.png");
+                background-image: url("../design/Section1/section1-dotted-bg-right.png");
                 background-position: bottom;
 
                 &.support {
-                    background-image: url("../design/section3/section3-dotted-bg-right1.png");
+                    background-image: url("../design/section3/section3-dotted-bg-right.png");
                 }
             }
         }        
